@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import Sidebar from "../components/Sidebar";
+import { Link } from "react-router-dom";
 
 const DashboardPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -19,9 +22,31 @@ const DashboardPage = () => {
     { icon: "fa-bullseye", value: "7.5/10", label: "Average Score" },
     { icon: "fa-trophy", value: "2 Days", label: "Current Streak" },
     { icon: "fa-clock", value: "18h", label: "Hours Remaining" },
+    { icon: "fa-brain", value: "3", label: "Total Interviews" },
+    { icon: "fa-bullseye", value: "7.5/10", label: "Average Score" },
+    { icon: "fa-trophy", value: "2 Days", label: "Current Streak" },
+    { icon: "fa-clock", value: "18h", label: "Hours Remaining" },
   ];
 
   const skills = [
+    {
+      name: "Communication",
+      score: 75,
+      description: "Clarity and articulation",
+    },
+    {
+      name: "Technical Knowledge",
+      score: 85,
+      description: "Programming and algorithms",
+    },
+    { name: "Problem Solving", score: 78, description: "Analytical thinking" },
+    { name: "Leadership", score: 78, description: "Team management skills" },
+    {
+      name: "Time Management",
+      score: 78,
+      description: "Efficiency and planning",
+    },
+    { name: "Cultural Fit", score: 78, description: "Company alignment" },
     {
       name: "Communication",
       score: 75,
@@ -48,14 +73,26 @@ const DashboardPage = () => {
       duration: "20-30 min",
       questions: "5-8 questions",
       description: "Programming, algorithms, and system design questions",
+      title: "Technical Skills",
+      duration: "20-30 min",
+      questions: "5-8 questions",
+      description: "Programming, algorithms, and system design questions",
     },
     {
       title: "Behavioral",
       duration: "15-25 min",
       questions: "4-6 questions",
       description: "Teamwork, leadership, and situational questions",
+      title: "Behavioral",
+      duration: "15-25 min",
+      questions: "4-6 questions",
+      description: "Teamwork, leadership, and situational questions",
     },
     {
+      title: "System Design",
+      duration: "30-45 min",
+      questions: "2-4 questions",
+      description: "Architecture and scalability challenges",
       title: "System Design",
       duration: "30-45 min",
       questions: "2-4 questions",
@@ -68,11 +105,32 @@ const DashboardPage = () => {
     "Use voice mode to practice speaking your answers out loud",
     "Review AI feedback to identify areas for improvement",
     "Hours don't expire for 30 days - use them at your own pace",
+    "Practice regularly to maintain your interview streak and improve your skills",
+    "Use voice mode to practice speaking your answers out loud",
+    "Review AI feedback to identify areas for improvement",
+    "Hours don't expire for 30 days - use them at your own pace",
   ];
 
   return (
     <div className="flex min-h-screen bg-light-bg">
       {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+          onClick={toggleModal}
+        >
+          <div
+            className="bg-white p-5 rounded-xl w-96 text-center relative shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-2.5 right-4 text-xl border-none bg-none cursor-pointer text-text-gray"
+              onClick={toggleModal}
+            >
+              &times;
+            </button>
+            <div className="text-4xl mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent block">
+              <i className="fas fa-bell"></i>
+            </div>
         <div
           className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
           onClick={toggleModal}
@@ -100,6 +158,15 @@ const DashboardPage = () => {
             >
               Close
             </button>
+            <p className="text-text-gray mb-4">
+              You do not have any notifications.
+            </p>
+            <button
+              className="py-2 px-4 bg-gradient-to-r from-primary to-secondary text-white rounded-md cursor-pointer font-bold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+              onClick={toggleModal}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
@@ -112,8 +179,18 @@ const DashboardPage = () => {
           >
             <i className="fas fa-bars"></i>
           </button>
+          <button
+            onClick={toggleSidebar}
+            className="lg:hidden bg-none border-none text-text-gray"
+          >
+            <i className="fas fa-bars"></i>
+          </button>
           <div className="flex-1 relative max-w-md">
             <i className="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-text-gray"></i>
+            <input
+              placeholder="Search..."
+              className="w-full py-3 pl-11 pr-4 bg-white/70 border border-gray-200 rounded-lg text-text-dark placeholder-text-gray"
+            />
             <input
               placeholder="Search..."
               className="w-full py-3 pl-11 pr-4 bg-white/70 border border-gray-200 rounded-lg text-text-dark placeholder-text-gray"
@@ -124,7 +201,18 @@ const DashboardPage = () => {
               className="relative bg-none border-none text-2xl cursor-pointer text-text-gray"
               onClick={toggleModal}
             >
+            <button
+              className="relative bg-none border-none text-2xl cursor-pointer text-text-gray"
+              onClick={toggleModal}
+            >
               <i className="fas fa-bell"></i>
+            </button>
+            <button className="bg-none border-none">
+              <img
+                src="https://static.vecteezy.com/system/resources/previews/018/765/757/original/user-profile-icon-in-flat-style-member-avatar-illustration-on-isolated-background-human-permission-sign-business-concept-vector.jpg"
+                alt="Profile"
+                className="w-9 h-9 rounded-full"
+              />
             </button>
             <button className="bg-none border-none">
               <img
@@ -146,10 +234,25 @@ const DashboardPage = () => {
                 You've completed 2 practice sessions this week. Keep up the good
                 work!
               </p>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
+                Welcome back, User!
+              </h1>
+              <p className="text-text-gray">
+                You've completed 2 practice sessions this week. Keep up the good
+                work!
+              </p>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="bg-white/90 p-5 rounded-2xl flex items-center gap-4 border border-gray-100 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="text-2xl text-primary">
+                  <i className={`fas ${stat.icon}`}></i>
+                </div>
             {stats.map((stat) => (
               <div
                 key={stat.label}
@@ -170,7 +273,15 @@ const DashboardPage = () => {
             <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
               Your Interview Skills
             </h2>
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
+              Your Interview Skills
+            </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {skills.map((skill) => (
+                <div
+                  key={skill.name}
+                  className="bg-white/70 p-5 rounded-xl transition-all duration-300 border border-gray-100 hover:-translate-y-1 hover:shadow-xl"
+                >
               {skills.map((skill) => (
                 <div
                   key={skill.name}
@@ -181,7 +292,13 @@ const DashboardPage = () => {
                     <div className="bg-gradient-to-r from-primary to-secondary py-1 px-2.5 rounded-full text-white text-sm font-semibold">
                       {skill.score}%
                     </div>
+                    <div className="bg-gradient-to-r from-primary to-secondary py-1 px-2.5 rounded-full text-white text-sm font-semibold">
+                      {skill.score}%
+                    </div>
                   </div>
+                  <p className="text-text-gray text-sm mb-3">
+                    {skill.description}
+                  </p>
                   <p className="text-text-gray text-sm mb-3">
                     {skill.description}
                   </p>
@@ -190,7 +307,14 @@ const DashboardPage = () => {
                       className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
                       style={{ width: `${skill.score}%` }}
                     ></div>
+                    <div
+                      className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
+                      style={{ width: `${skill.score}%` }}
+                    ></div>
                   </div>
+                  <button className="w-full p-2.5 border border-primary rounded-lg bg-transparent text-primary cursor-pointer transition-all duration-300 relative overflow-hidden hover:bg-primary/10 hover:-translate-y-0.5">
+                    Review Session
+                  </button>
                   <button className="w-full p-2.5 border border-primary rounded-lg bg-transparent text-primary cursor-pointer transition-all duration-300 relative overflow-hidden hover:bg-primary/10 hover:-translate-y-0.5">
                     Review Session
                   </button>
@@ -205,6 +329,9 @@ const DashboardPage = () => {
               <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Quick Start Interview
               </h2>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Quick Start Interview
+              </h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {quickStartPacks.map((pack, index) => (
@@ -212,9 +339,16 @@ const DashboardPage = () => {
                   key={index}
                   className="bg-white/70 p-5 rounded-2xl border border-gray-100 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
+                <div
+                  key={index}
+                  className="bg-white/70 p-5 rounded-2xl border border-gray-100 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
                   <div className="text-center font-bold mb-4">
                     <div className="text-lg">{pack.title}</div>
                     <small className="block text-text-gray text-sm">
+                      <p className="font-bold">
+                        {pack.duration} • {pack.questions}
+                      </p>
                       <p className="font-bold">
                         {pack.duration} • {pack.questions}
                       </p>
@@ -230,7 +364,18 @@ const DashboardPage = () => {
                       <i className="fas fa-check text-primary"></i> AI generated
                       questions
                     </li>
+                    <li className="flex items-center gap-2 text-text-gray text-sm">
+                      <i className="fas fa-check text-primary"></i> Instant
+                      feedback
+                    </li>
+                    <li className="flex items-center gap-2 text-text-gray text-sm">
+                      <i className="fas fa-check text-primary"></i> AI generated
+                      questions
+                    </li>
                   </ul>
+                  <button className="w-full py-3 px-5 bg-gradient-to-r from-primary to-secondary border-none rounded-lg text-white font-semibold cursor-pointer inline-flex gap-2 items-center transition-all duration-300 relative overflow-hidden hover:-translate-y-0.5 hover:shadow-lg">
+                    Need Hours
+                  </button>
                   <button className="w-full py-3 px-5 bg-gradient-to-r from-primary to-secondary border-none rounded-lg text-white font-semibold cursor-pointer inline-flex gap-2 items-center transition-all duration-300 relative overflow-hidden hover:-translate-y-0.5 hover:shadow-lg">
                     Need Hours
                   </button>
@@ -245,6 +390,9 @@ const DashboardPage = () => {
               <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Recent Activity
               </h2>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Recent Activity
+              </h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="bg-white/70 p-5 rounded-xl transition-all duration-300 border border-gray-100 hover:-translate-y-1 hover:shadow-xl">
@@ -252,7 +400,13 @@ const DashboardPage = () => {
                   <h3 className="font-semibold">
                     No recent interview sessions
                   </h3>
+                  <h3 className="font-semibold">
+                    No recent interview sessions
+                  </h3>
                 </div>
+                <p className="text-text-gray text-sm">
+                  Start your first interview to see your progress here
+                </p>
                 <p className="text-text-gray text-sm">
                   Start your first interview to see your progress here
                 </p>
@@ -266,6 +420,9 @@ const DashboardPage = () => {
               <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 💡 Pro Tips
               </h2>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                💡 Pro Tips
+              </h2>
             </div>
             <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-4">
               <div className="bg-white/70 p-5 rounded-2xl border border-gray-100 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
@@ -274,6 +431,12 @@ const DashboardPage = () => {
                 </div>
                 <ul className="list-none mb-4">
                   {proTips.map((tip, index) => (
+                    <li
+                      key={index}
+                      className="flex items-center gap-2 text-text-gray text-sm mb-2"
+                    >
+                      <i className="fas fa-check text-primary"></i> {tip}
+                    </li>
                     <li
                       key={index}
                       className="flex items-center gap-2 text-text-gray text-sm mb-2"
@@ -292,3 +455,4 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+
