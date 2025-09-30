@@ -11,8 +11,8 @@ const Sidebar = ({ activePage }) => {
     { to: "/ai-setup", icon: "fa-robot", label: "AI Setup" },
     { to: "/profile", icon: "fa-user", label: "Profile" },
     { to: "/aivideo", icon: "fa-video", label: "AI Video Interview" },
-    { to: "/language", icon: "fa-globe", label: "Language" },
     { to: "/ai-training", icon: "fa-graduation-cap", label: "AI Training" },
+    { to: "/language", icon: "fa-globe", label: "Language" },
   ];
 
   return (
