@@ -18,8 +18,8 @@ const Sidebar = ({ activePage }) => {
       <div className="sidebar-header">
         <Link to="/" className="logo">
           <img
-            src="/img/logo2.png"
-            style={{ width: "70px" }}
+            src="/img/logo3.png"
+            style={{ width: "100%"}}
             alt="ConfidenSee Logo"
           />
         </Link>
