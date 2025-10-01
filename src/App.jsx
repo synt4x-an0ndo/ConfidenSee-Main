@@ -6,9 +6,7 @@ import DashboardPage from './pages/DashboardPage';
 import QuestionPacksPage from './pages/QuestionPacksPage';
 import PerformancePage from './pages/PerformancePage';
 import PricingPage from './pages/PricingPage';
-import AISetupPage from './pages/AISetupPage';
 import ProfilePage from './pages/ProfilePage';
-import AIVideoPage from './pages/AIVideoPage';
 import LanguagePage from './pages/LanguagePage';
 import AITrainingPage from './pages/AITrainingPage';
 import RegisterPage from './pages/RegisterPage';
@@ -31,9 +29,7 @@ const App = () => {
                   <Route path="/question-packs" element={<QuestionPacksPage />} />
                   <Route path="/performance" element={<PerformancePage />} />
                   <Route path="/pricing" element={<PricingPage />} />
-                  <Route path="/ai-setup" element={<AISetupPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
-                  <Route path="/aivideo" element={<AIVideoPage />} />
                   <Route path="/language" element={<LanguagePage />} />
                   <Route path="/ai-training" element={<AITrainingPage />} />
                 </Routes>

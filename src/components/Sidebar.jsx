@@ -8,9 +8,7 @@ const Sidebar = ({ activePage }) => {
     { to: "/question-packs", icon: "fa-folder", label: "Question Packs" },
     { to: "/performance", icon: "fa-chart-line", label: "Performance" },
     { to: "/pricing", icon: "fa-tag", label: "Pricing" },
-    { to: "/ai-setup", icon: "fa-robot", label: "AI Setup" },
     { to: "/profile", icon: "fa-user", label: "Profile" },
-    { to: "/aivideo", icon: "fa-video", label: "AI Video Interview" },
     { to: "/ai-training", icon: "fa-graduation-cap", label: "AI Training" },
     { to: "/language", icon: "fa-globe", label: "Language" },
   ];

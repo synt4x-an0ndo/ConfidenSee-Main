@@ -1,25 +1,4 @@
-/* CSS Variables - Light Theme */
-    :root {
-      --primary: #5e72e4;
-      --primary-light: #7e95f2;
-      --secondary: #ff5e7d;
-      --secondary-light: #ff8fa4;
-      --light-bg: #f8f9fe;
-      --lighter-bg: #ffffff;
-      --text-dark: #2d3748;
-      --text-gray: #718096;
-      --glass-light: rgba(255, 255, 255, 0.7);
-      --glass-dark: rgba(255, 255, 255, 0.9);
-      --blur: blur(20px);
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      --card-shadow: 0 8px 26px -4px rgba(20, 20, 20, 0.08);
-      --hover-shadow: 0 15px 35px -5px rgba(20, 20, 20, 0.1);
-      --border-color: rgba(0, 0, 0, 0.06);
-      --card-bg: #ffffff;
-      --success: #2dce89;
-      --warning: #ffaa00;
-      --info: #00aaff;
-    }
+
     
     * {
       margin: 0;
@@ -29,7 +8,7 @@
     
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--lighter-bg);
+      background: var(--light-bg);
       color: var(--text-dark);
       line-height: 1.6;
       overflow-x: hidden;
@@ -58,8 +37,7 @@
     /* Sidebar */
     .sidebar {
       width: 280px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: var(--blur);
+      background: var(--light-bg);
       display: flex;
       flex-direction: column;
       border-right: 1px solid var(--border-color);
@@ -172,8 +150,7 @@
     
     /* Header */
     .dashboard-header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: var(--blur);
+      background: var(--light-bg);
       padding: 19px 24px;
       display: flex;
       align-items: center;
@@ -540,8 +517,7 @@
 /* Chatbot Toggle Button */
 .chatbot-toggle {
   width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: var(--primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -616,7 +592,7 @@
 .chatbot-avatar {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: var(--primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -690,7 +666,7 @@
 }
 
 .bot-message .message-avatar {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: var(--primary);
   color: white;
 }
 
@@ -707,7 +683,7 @@
 }
 
 .user-message .message-content {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: var(--primary);
   color: white;
 }
 
@@ -838,7 +814,7 @@
 .upgrade-card {
   margin: 20px;
   padding: 20px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: var(--primary);
   border-radius: 16px;
   color: white;
   position: relative;
